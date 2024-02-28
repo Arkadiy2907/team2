@@ -4,11 +4,14 @@ import NotFound from './pages/Not-found/NotFound';
 import SignIn from './pages/SignIn/SignIn';
 import SignUp from './pages/SignUp/SignUp';
 import Header from './components/Header/Header';
+import Favorites from './pages/Favorites/Favorites';
+import History from './pages/History/History';
 // import { Provider } from 'react-redux';
+import { Container } from '@mui/material';
 
 function App() {
   return (
-    <div className="App">
+    <Container sx={{ ...styleApp }}>
       {/* <Provider store={store}> */}
       <Router>
         <Header />
@@ -16,12 +19,23 @@ function App() {
           <Route path="/" element={<Intro />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
+          <Route path="/favorites" element={<Favorites />} />
+          <Route path="/history" element={<History />} />
           <Route path={'/*'} element={<NotFound />} />
         </Routes>
       </Router>
       {/* </Provider> */}
-    </div>
+    </Container>
   );
 }
 
 export default App;
+
+const styleApp = {
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'flex-start',
+  alignItems: 'center',
+  minHeight: '100vh',
+  overflowY: 'hidden',
+};
