@@ -1,30 +1,32 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Intro from './pages/Intro/Intro';
 import NotFound from './pages/Not-found/NotFound';
 import SignIn from './pages/SignIn/SignIn';
 import SignUp from './pages/SignUp/SignUp';
 import Header from './components/Header/Header';
 import Favorites from './pages/Favorites/Favorites';
 import History from './pages/History/History';
-// import { Provider } from 'react-redux';
+import Search from './pages/Search/Search';
+import { Provider } from 'react-redux';
+import { store } from './store';
 import { Container } from '@mui/material';
 
 function App() {
   return (
     <Container sx={{ ...styleApp }}>
-      {/* <Provider store={store}> */}
-      <Router>
-        <Header />
-        <Routes>
-          <Route path="/" element={<Intro />} />
-          <Route path="/signin" element={<SignIn />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/favorites" element={<Favorites />} />
-          <Route path="/history" element={<History />} />
-          <Route path={'/*'} element={<NotFound />} />
-        </Routes>
-      </Router>
-      {/* </Provider> */}
+      <Provider store={store}>
+        <Router>
+          <Header />
+          <Routes>
+            <Route path="/" element={<Search />} />
+            <Route path="/signin" element={<SignIn />} />
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/search" element={<Search />} />
+            <Route path="/favorites" element={<Favorites />} />
+            <Route path="/history" element={<History />} />
+            <Route path={'/*'} element={<NotFound />} />
+          </Routes>
+        </Router>
+      </Provider>
     </Container>
   );
 }

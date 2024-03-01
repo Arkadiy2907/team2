@@ -1,11 +1,25 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Container, IconButton, Typography, Button, Box } from '@mui/material';
+import { useDispatch } from 'react-redux';
+import {
+  Container,
+  IconButton,
+  Typography,
+  Button,
+  Box,
+  Avatar,
+} from '@mui/material';
 import logo from '../../assets/logo.png';
 import { wrap, wrapLogo } from './styles';
 
 const Header = () => {
-  const [isReg, setIsReg] = React.useState(true);
+  const [isReg, setIsReg] = React.useState(false);
+  const dispatch = useDispatch();
+
+  const handleClick = () => {
+    setIsReg(false);
+    dispatch({ type: 'SET_IS_SEARCH', payload: false });
+  };
 
   return (
     <Container sx={{ ...wrap }}>
@@ -19,8 +33,9 @@ const Header = () => {
           }}
           component={Link}
           to="/"
+          onClick={() => dispatch({ type: 'SET_IS_SEARCH', payload: false })}
         >
-          <img
+          <Avatar
             src={logo}
             alt="logo"
             style={{ width: '4rem', height: '4rem' }}
@@ -38,7 +53,7 @@ const Header = () => {
           <Button component={Link} to="/history" color="inherit">
             History
           </Button>
-          <Button onClick={() => setIsReg(false)} color="inherit">
+          <Button onClick={handleClick} color="inherit">
             SignOut
           </Button>
         </Box>

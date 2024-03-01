@@ -8,7 +8,9 @@ const root = createRoot(container);
 
 root.render(
   <React.StrictMode>
-    <GlobalStyles styles={{ '*': { padding: '0', margin: '0' } }} />
+    <GlobalStyles
+      styles={{ '*': { padding: '0', margin: '0', boxSizing: 'border-box' } }}
+    />
     <App />
   </React.StrictMode>
 );

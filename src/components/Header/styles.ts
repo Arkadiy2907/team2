@@ -4,6 +4,8 @@ export const wrap = {
   alignItems: 'center',
   overflowY: 'auto',
   backgroundColor: 'aquamarine',
+  padding: '5px',
+  marginBottom: '5px',
 };
 
 export const wrapLogo = {
