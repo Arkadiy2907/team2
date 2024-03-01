@@ -39,6 +39,7 @@ export default function Search() {
   }, [search]);
 
   const handleSearch = async () => {
+    setIsServerError(false);
     if (selectedDate) {
       setIsLoading(true);
       setIsSearch(true);
@@ -78,7 +79,12 @@ export default function Search() {
             onChange={handleDateChange}
           />
         </LocalizationProvider>
-        <Button variant="contained" onClick={handleSearch}>
+        <Button
+          variant="contained"
+          onClick={handleSearch}
+          sx={{ marginLeft: '10px' }}
+          disabled={!selectedDate}
+        >
           Search
         </Button>
       </Box>

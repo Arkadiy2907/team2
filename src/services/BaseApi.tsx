@@ -12,10 +12,25 @@ export const fetchCards = async (d: string) => {
     const res = await axios.get(
       `https://api.nasa.gov/EPIC/api/enhanced/date/${d}?api_key=${key}`
     );
-    for (const { identifier: id, image: title } of res.data) {
-      images.push({ id, title, date: d, src: getSrc(d, title, key) });
+    for (const {
+      identifier: id,
+      image: title,
+      date,
+      caption,
+      centroid_coordinates,
+    } of res.data) {
+      images.push({
+        id,
+        title,
+        date,
+        caption,
+        centroid_coordinates,
+        src: getSrc(d, title, key),
+      });
     }
     images.length = maxPic;
+    console.log(images);
+
     return images;
   } catch (error) {
     console.error('error=', error);

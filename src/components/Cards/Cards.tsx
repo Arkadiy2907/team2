@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Card from './Card';
 import ImageModal from './ImageModal';
 import { ICards, ICardsProps } from '../../services/types';
-import { List } from '@mui/material';
+import { Box } from '@mui/material';
 
 const Cards: React.FC<ICardsProps> = ({ images }) => {
   const [open, setOpen] = useState(false);
@@ -18,15 +18,13 @@ const Cards: React.FC<ICardsProps> = ({ images }) => {
   };
 
   return (
-    <div>
-      <List>
-        {images &&
-          images.map((image) => (
-            <Card key={image.id} image={image} onImageClick={handleOpen} />
-          ))}
-      </List>
+    <Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
+      {images &&
+        images.map((image) => (
+          <Card key={image.id} image={image} onImageClick={handleOpen} />
+        ))}
       <ImageModal open={open} image={selectedImage} onClose={handleClose} />
-    </div>
+    </Box>
   );
 };
 

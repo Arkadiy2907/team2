@@ -14,6 +14,11 @@ export interface ICards {
   title: string;
   date: string;
   src: string;
+  caption?: string;
+  centroid_coordinates: {
+    lat: string;
+    lon: string;
+  };
 }
 
 export interface ICardProps {

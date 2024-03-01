@@ -1,6 +1,6 @@
 import React from 'react';
 import { ICardProps } from '../../services/types';
-import { ListItem, ListItemText, ListItemAvatar } from '@mui/material';
+import { ListItem, ListItemAvatar, Typography } from '@mui/material';
 
 const Card: React.FC<ICardProps> = ({ image, onImageClick }) => {
   return (
@@ -9,10 +9,22 @@ const Card: React.FC<ICardProps> = ({ image, onImageClick }) => {
         <img
           src={image.src}
           alt={image.title}
-          style={{ width: '15rem', height: '15rem' }}
+          style={{ width: '15rem', height: '15rem', marginRight: '10px' }}
         />
       </ListItemAvatar>
-      <ListItemText primary={image.title} />
+      <Typography variant="body1" style={{ verticalAlign: 'top' }}>
+        {image.date}
+        <br />
+        {image.title}
+        <br />
+        centroid coordinates:
+        <br />
+        {image.centroid_coordinates.lat}
+        <br />
+        {image.centroid_coordinates.lon}
+        <br />
+        {image.caption}
+      </Typography>
     </ListItem>
   );
 };
