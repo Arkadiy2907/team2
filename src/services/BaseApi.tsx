@@ -1,14 +1,9 @@
 import axios from 'axios';
+import { maxPic, getSrc } from './Helper';
 import { ICards } from './types';
 
-const key = '3hG9LrKvhAqlZDQ6lO8L1RamMiyMdmg0rySFlVFJ';
-// const key = 'DEMO_KEY';
-const maxPic = 3;
-
-const getSrc = (d: string, id: string, key: string) => {
-  const date = d.split('-').join('/');
-  return `https://api.nasa.gov/EPIC/archive/enhanced/${date}/png/${id}.png?api_key=${key}`;
-};
+// const key = '3hG9LrKvhAqlZDQ6lO8L1RamMiyMdmg0rySFlVFJ';
+const key = 'DEMO_KEY';
 
 export const fetchCards = async (d: string) => {
   const images: ICards[] = [];
@@ -23,6 +18,7 @@ export const fetchCards = async (d: string) => {
     images.length = maxPic;
     return images;
   } catch (error) {
-    console.error(error);
+    console.error('error=', error);
+    throw error;
   }
 };

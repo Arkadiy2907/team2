@@ -7,6 +7,7 @@ import dayjs from 'dayjs';
 import { minDate } from '../../services/Helper';
 import Intro from '../../components/Intro/Intro';
 import Cards from '../../components/Cards/Cards';
+import ServerError from '../../components/Server-error/ServerError';
 import { Container, Box, Typography, Button } from '@mui/material';
 import { fetchCards } from '../../services/BaseApi';
 import { IRootStateSearch, ICards } from '../../services/types';
@@ -23,6 +24,7 @@ export default function Search() {
   );
   const [isSearch, setIsSearch] = React.useState(search);
   const [cards, setCards] = React.useState<ICards[] | null>(null);
+  const [isServerError, setIsServerError] = React.useState(false);
 
   const handleDateChange = (value: dayjs.Dayjs | null) => {
     setSelectedDate(value);
@@ -45,7 +47,8 @@ export default function Search() {
         const cardsData = await fetchCards(selectedDate.format('YYYY-MM-DD'));
         setCards(cardsData || []);
       } catch (error) {
-        console.error(error);
+        setIsServerError(true);
+        console.error('error==', error);
       } finally {
         setIsLoading(false);
       }
@@ -102,6 +105,7 @@ export default function Search() {
           <Intro />
         </Box>
       )}
+      {isServerError && <ServerError />}
     </Container>
   );
 }
