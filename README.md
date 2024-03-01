@@ -52,6 +52,6 @@
 
 ### Roman (favorites/history)
 
-### Arkadiy (search/application framework)
+### Arkadiy (search/каркас приложения)
 
 ![макет блока](./src/assets/maket.png)

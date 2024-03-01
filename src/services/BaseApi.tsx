@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { ICards } from './types';
 
-// const key = '3hG9LrKvhAqlZDQ6lO8L1RamMiyMdmg0rySFlVFJ';
-const key = 'DEMO_KEY';
+const key = '3hG9LrKvhAqlZDQ6lO8L1RamMiyMdmg0rySFlVFJ';
+// const key = 'DEMO_KEY';
 const maxPic = 3;
 
 const getSrc = (d: string, id: string, key: string) => {

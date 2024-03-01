@@ -15,3 +15,18 @@ export interface ICards {
   date: string;
   src: string;
 }
+
+export interface ICardProps {
+  image: ICards;
+  onImageClick: (image: ICards) => void;
+}
+
+export interface IModalProps {
+  open: boolean;
+  image: ICards | null;
+  onClose: () => void;
+}
+
+export interface ICardsProps {
+  images: ICards[];
+}
