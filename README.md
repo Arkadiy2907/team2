@@ -48,12 +48,10 @@
 
 ## P.S. Команда:
 
-### Anna
+### Gleb (signin/signup)
 
-### Gleb
+### Roman (favorites/history)
 
-### Roman
-
-### Arkadiy
+### Arkadiy (search/каркас приложения)
 
 ![макет блока](./src/assets/maket.png)

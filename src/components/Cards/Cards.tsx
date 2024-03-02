@@ -1,7 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Card from './Card';
+import ImageModal from './ImageModal';
+import { ICards, ICardsProps } from '../../services/types';
+import { Box } from '@mui/material';
 
-const Cards = () => {
-  return <h2>Cards</h2>;
+const Cards: React.FC<ICardsProps> = ({ images }) => {
+  const [open, setOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState<ICards | null>(null);
+
+  const handleOpen = (image: ICards) => {
+    setSelectedImage(image);
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  return (
+    <Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
+      {images &&
+        images.map((image) => (
+          <Card key={image.id} image={image} onImageClick={handleOpen} />
+        ))}
+      <ImageModal open={open} image={selectedImage} onClose={handleClose} />
+    </Box>
+  );
 };
 
 export default Cards;
