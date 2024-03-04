@@ -1,28 +1,15 @@
 import React, { useState } from 'react'
-import {
-  useForm,
-  Controller,
-  SubmitHandler,
-  useFormState,
-} from 'react-hook-form'
-import {
-  Button,
-  TextField,
-  Typography,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogActions,
-} from '@mui/material'
-import { loginValidation, passwordValidation } from '../validation'
-import { ISignForm, IUser } from '../Interfaces'
+import { SubmitHandler } from 'react-hook-form'
 import './SignIn.css'
 import '../authentication.css'
 import AuthForm from '../AuthForm'
+import { useDispatch } from 'react-redux'
+import { AuthAction, ISignForm, IUser } from '../../../services/types'
 
 const SignIn: React.FC = () => {
   const [errorModalOpen, setErrorModalOpen] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
+  const dispatch = useDispatch()
 
   const onSubmit: SubmitHandler<ISignForm> = data => {
     const storedUsers = localStorage.getItem('users')
@@ -36,6 +23,7 @@ const SignIn: React.FC = () => {
 
       if (foundUser) {
         console.log('Login successful!')
+        dispatch<AuthAction>({ type: 'LOGIN', payload: foundUser })
         //добавить логику после успешного логина
       } else {
         console.log('Неправильные введенные данные. Попробуйте снова.')

@@ -1,10 +1,5 @@
-import React, { useState } from 'react'
-import {
-  useForm,
-  Controller,
-  SubmitHandler,
-  useFormState,
-} from 'react-hook-form'
+import React from 'react'
+import { useForm, Controller, useFormState } from 'react-hook-form'
 import {
   Button,
   TextField,
@@ -14,16 +9,8 @@ import {
   DialogContent,
   DialogActions,
 } from '@mui/material'
-import { ISignForm, IUser } from './Interfaces'
 import { loginValidation, passwordValidation } from './validation'
-
-interface AuthFormProps {
-  type: 'signUp' | 'signIn' // Specify the type of authentication form
-  onSubmit: (data: any) => any
-  errorModalOpen: boolean
-  setErrorModalOpen: (data: any) => any // You might want to replace 'any' with the actual type of form data
-  errorMessage: string
-}
+import { AuthFormProps, ISignForm } from '../../services/types'
 
 const AuthForm: React.FunctionComponent<AuthFormProps> = ({
   type,
