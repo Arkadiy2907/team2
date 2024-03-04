@@ -8,6 +8,7 @@ import { minDate } from '../../services/Helper';
 import Intro from '../../components/Intro/Intro';
 import Cards from '../../components/Cards/Cards';
 import ServerError from '../../components/Server-error/ServerError';
+import { isSearchAction } from '../../store/Actions/Action';
 import { Container, Box, Typography, Button } from '@mui/material';
 import { fetchCards } from '../../services/BaseApi';
 import { IRootStateSearch, ICards } from '../../services/types';
@@ -43,7 +44,7 @@ export default function Search() {
     if (selectedDate) {
       setIsLoading(true);
       setIsSearch(true);
-      dispatch({ type: 'SET_IS_SEARCH', payload: true });
+      dispatch(isSearchAction(true));
       try {
         const cardsData = await fetchCards(selectedDate.format('YYYY-MM-DD'));
         setCards(cardsData || []);

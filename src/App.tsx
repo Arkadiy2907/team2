@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import NotFound from './pages/Not-found/NotFound';
-import SignIn from './pages/SignIn/SignIn';
-import SignUp from './pages/SignUp/SignUp';
+import SignIn from './pages/authentication/SignIn/SignIn';
+import SignUp from './pages/authentication/SignUp/SignUp';
 import Header from './components/Header/Header';
 import Favorites from './pages/Favorites/Favorites';
 import History from './pages/History/History';
