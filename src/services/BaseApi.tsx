@@ -29,7 +29,6 @@ export const fetchCards = async (d: string) => {
       });
     }
     images.length = maxPic;
-    console.log(images);
 
     return images;
   } catch (error) {
