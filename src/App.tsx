@@ -1,14 +1,15 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import NotFound from './pages/Not-found/NotFound';
-import SignIn from './pages/SignIn/SignIn';
-import SignUp from './pages/SignUp/SignUp';
-import Header from './components/Header/Header';
-import Favorites from './pages/Favorites/Favorites';
-import History from './pages/History/History';
-import Search from './pages/Search/Search';
-import { Provider } from 'react-redux';
-import { store } from './store';
-import { Container } from '@mui/material';
+import { Container } from '@mui/material'
+import { Provider } from 'react-redux'
+import { Routes } from 'react-router'
+import { Route, BrowserRouter as Router } from 'react-router-dom'
+import Header from './components/Header/Header'
+import Favorites from './pages/Favorites/Favorites'
+import History from './pages/History/History'
+import MainPage from './pages/MainPage/MainPage'
+import NotFound from './pages/Not-found/NotFound'
+import SignIn from './pages/SignIn/SignIn'
+import SignUp from './pages/SignUp/SignUp'
+import { store } from './store'
 
 function App() {
   return (
@@ -17,10 +18,10 @@ function App() {
         <Router>
           <Header />
           <Routes>
-            <Route path="/" element={<Search />} />
+            <Route path="/" element={<MainPage />} />
             <Route path="/signin" element={<SignIn />} />
             <Route path="/signup" element={<SignUp />} />
-            <Route path="/search" element={<Search />} />
+            {/* <Route path="/search" element={<Search />} /> */}
             <Route path="/favorites" element={<Favorites />} />
             <Route path="/history" element={<History />} />
             <Route path={'/*'} element={<NotFound />} />
@@ -28,10 +29,10 @@ function App() {
         </Router>
       </Provider>
     </Container>
-  );
+  )
 }
 
-export default App;
+export default App
 
 const styleApp = {
   display: 'flex',
@@ -40,4 +41,4 @@ const styleApp = {
   alignItems: 'center',
   minHeight: '100vh',
   overflowY: 'hidden',
-};
+}
