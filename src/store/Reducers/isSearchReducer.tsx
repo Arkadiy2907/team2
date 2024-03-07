@@ -1,5 +1,5 @@
 import { SET_IS_SEARCH } from '../Actions/ActionTypes';
-import { IActionisSearch } from '../../services/types';
+import { IActionsSearch } from '../../services/types';
 
 const defaultState = {
   isSearch: false,
@@ -7,7 +7,7 @@ const defaultState = {
 
 export const isSearchReducer = (
   state = defaultState,
-  action: IActionisSearch
+  action: IActionsSearch
 ) => {
   switch (action.type) {
     case SET_IS_SEARCH:
