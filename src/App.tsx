@@ -8,7 +8,7 @@ import MainPage from './pages/MainPage/MainPage'
 import NotFound from './pages/Not-found/NotFound'
 import SignIn from './pages/authentication/SignIn/SignIn'
 import SignUp from './pages/authentication/SignUp/SignUp'
-import { store } from './store'
+import { store } from './store/index.jsx'
 
 function App() {
   return (
@@ -20,7 +20,7 @@ function App() {
             <Route path="/" element={<MainPage />} />
             <Route path="/signin" element={<SignIn />} />
             <Route path="/signup" element={<SignUp />} />
-            {/* <Route path="/search" element={<Search />} /> */}
+            <Route path="/main" element={<MainPage />} />
             <Route path="/favorites" element={<Favorites />} />
             <Route path="/history" element={<History />} />
             <Route path={'/*'} element={<NotFound />} />

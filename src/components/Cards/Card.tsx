@@ -1,17 +1,25 @@
 import { Favorite } from '@mui/icons-material'
 import { IconButton, ListItem, ListItemAvatar, Typography } from '@mui/material'
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useImageLoader } from '../../hooks/useImageLoader'
-import { ICardProps } from '../../services/types'
+import { ICardProps, ICards, RootState } from '../../services/types'
 import Loader from '../Loader/Loader'
 
-const Card: React.FC<ICardProps> = ({ image, onImageClick }) => {
+const Card: React.FC<ICardProps> = ({ image, onImageClick, logged }) => {
   const isLoading = useImageLoader(image.src)
   const favorites = useSelector(
-    (state: any) => state.favoritesReducer.favorites,
+    (state: RootState) => state.favoritesReducer.favorites,
   )
-  const isFavorite = favorites.some((favorite: any) => favorite.id === image.id)
+
+  const [isImageFavorite, setIsImageFavorite] = useState(false)
+
+  const isFavorite: boolean =
+    favorites && favorites.some((favorite: ICards) => favorite.id === image.id)
+
+  useEffect(() => {
+    setIsImageFavorite(isFavorite)
+  }, [isFavorite])
 
   const dispatch = useDispatch()
 
@@ -33,7 +41,12 @@ const Card: React.FC<ICardProps> = ({ image, onImageClick }) => {
             <img
               src={image.src}
               alt={image.title}
-              style={{ width: '15rem', height: '15rem', marginRight: '10px' }}
+              style={{
+                width: '15rem',
+                height: '15rem',
+                marginRight: '10px',
+                cursor: 'pointer',
+              }}
             />
           </ListItemAvatar>
           <Typography variant="body1" style={{ verticalAlign: 'top' }}>
@@ -49,12 +62,14 @@ const Card: React.FC<ICardProps> = ({ image, onImageClick }) => {
             <br />
             {image.caption}
           </Typography>
-          <IconButton
-            onClick={() => handleFavoritesIcon()}
-            color={isFavorite ? 'primary' : 'default'}
-          >
-            <Favorite />
-          </IconButton>
+          {logged && (
+            <IconButton
+              onClick={() => handleFavoritesIcon()}
+              color={isImageFavorite ? 'primary' : 'default'}
+            >
+              <Favorite />
+            </IconButton>
+          )}
         </>
       )}
     </ListItem>

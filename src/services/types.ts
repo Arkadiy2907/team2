@@ -25,6 +25,7 @@ export interface ICards {
 export interface ICardProps {
   image: ICards
   onImageClick: (image: ICards) => void
+  logged?: boolean
 }
 
 export interface IModalProps {
@@ -81,3 +82,18 @@ export interface LogoutAction {
 }
 
 export type AuthAction = LoginSuccessAction | LogoutAction
+
+export interface FavoritesState {
+  favorites: ICards[]
+  actionLogs: []
+}
+
+export type FavoritesAction =
+  | { type: 'ADD_TO_FAVORITES'; payload: ICards }
+  | { type: 'REMOVE_FROM_FAVORITES'; payload: ICards }
+
+export interface RootState {
+  isSearch: IRootStateSearch
+  isLogged: IRootStateLogged
+  favoritesReducer: FavoritesState
+}

@@ -1,28 +1,13 @@
 /* eslint-disable no-case-declarations */
-export interface Photo {
-  id: string
-  title: string
-  date: string
-  src: string
-  caption?: string
-  centroid_coordinates: {
-    lat: string
-    lon: string
-  }
-  isFavorite: boolean
-}
 
-export interface FavoritesState {
-  favorites: Photo[]
-  actionLogs: []
-}
+import { FavoritesState, FavoritesAction, ICards } from '../../services/types'
 
 const initialState: FavoritesState = {
   favorites: [],
   actionLogs: [],
 }
 
-const favoritesReducer = (state = initialState, action: any) => {
+const favoritesReducer = (state = initialState, action: FavoritesAction) => {
   switch (action.type) {
     case 'ADD_TO_FAVORITES':
       const isAlreadyInFavorites = state.favorites.some(
@@ -47,7 +32,7 @@ const favoritesReducer = (state = initialState, action: any) => {
       return {
         ...state,
         favorites: state.favorites.filter(
-          (favorite: Photo) => favorite !== action.payload,
+          (favorite: ICards) => favorite !== action.payload,
         ),
         actionLogs: [
           ...state.actionLogs,
