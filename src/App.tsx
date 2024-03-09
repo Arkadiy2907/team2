@@ -1,14 +1,13 @@
 import { Container } from '@mui/material'
 import { Provider } from 'react-redux'
-import { Routes } from 'react-router'
-import { Route, BrowserRouter as Router } from 'react-router-dom'
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
 import Header from './components/Header/Header'
 import Favorites from './pages/Favorites/Favorites'
 import History from './pages/History/History'
 import MainPage from './pages/MainPage/MainPage'
 import NotFound from './pages/Not-found/NotFound'
-import SignIn from './pages/SignIn/SignIn'
-import SignUp from './pages/SignUp/SignUp'
+import SignIn from './pages/authentication/SignIn/SignIn'
+import SignUp from './pages/authentication/SignUp/SignUp'
 import { store } from './store'
 
 function App() {

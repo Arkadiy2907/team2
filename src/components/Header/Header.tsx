@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { isSearchAction, isLoggedAction } from '../../store/Actions/Action';
 import {
   Container,
   IconButton,
@@ -10,15 +11,25 @@ import {
   Avatar,
 } from '@mui/material';
 import logo from '../../assets/logo.png';
+import { IRootStateLogged } from '../../services/types';
 import { wrap, wrapLogo } from './styles';
 
 const Header = () => {
-  const [isReg, setIsReg] = React.useState(false);
+  const logged = useSelector(
+    (state: IRootStateLogged) => state.isLogged.isLogged
+  );
+
+  const [isReg, setIsReg] = React.useState(logged);
   const dispatch = useDispatch();
 
-  const handleClick = () => {
+  React.useEffect(() => {
+    setIsReg(logged);
+  }, [logged]);
+
+  const handleClickSignOut = () => {
     setIsReg(false);
-    dispatch({ type: 'SET_IS_SEARCH', payload: false });
+    dispatch(isSearchAction(false));
+    dispatch(isLoggedAction(false));
   };
 
   return (
@@ -33,7 +44,7 @@ const Header = () => {
           }}
           component={Link}
           to="/"
-          onClick={() => dispatch({ type: 'SET_IS_SEARCH', payload: false })}
+          onClick={() => dispatch(isSearchAction(false))}
         >
           <Avatar
             src={logo}
@@ -53,7 +64,7 @@ const Header = () => {
           <Button component={Link} to="/history" color="inherit">
             History
           </Button>
-          <Button onClick={handleClick} color="inherit">
+          <Button onClick={handleClickSignOut} color="inherit">
             SignOut
           </Button>
         </Box>
