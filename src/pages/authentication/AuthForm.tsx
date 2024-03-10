@@ -50,6 +50,7 @@ const AuthForm: React.FunctionComponent<AuthFormProps> = ({
             control={control}
             name="login"
             rules={loginValidation}
+            defaultValue=""
             render={({ field }) => (
               <TextField
                 label="Логин"
@@ -69,6 +70,7 @@ const AuthForm: React.FunctionComponent<AuthFormProps> = ({
             control={control}
             name="password"
             rules={passwordValidation}
+            defaultValue=""
             render={({ field }) => (
               <TextField
                 label="Пароль"
