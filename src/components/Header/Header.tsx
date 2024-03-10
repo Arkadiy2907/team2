@@ -59,7 +59,12 @@ const Header = () => {
 
       {isReg ? (
         <Box>
-          <Button component={Link} to="/" color="inherit">
+          <Button
+            component={Link}
+            to="/"
+            onClick={() => dispatch(isSearchAction(false))}
+            color="inherit"
+          >
             Search
           </Button>
           <Button component={Link} to="/favorites" color="inherit">
@@ -74,7 +79,12 @@ const Header = () => {
         </Box>
       ) : (
         <Box>
-          <Button component={Link} to="/" color="inherit">
+          <Button
+            component={Link}
+            to="/"
+            onClick={() => dispatch(isSearchAction(false))}
+            color="inherit"
+          >
             Search
           </Button>
           <Button component={Link} to="/signin" color="inherit">
