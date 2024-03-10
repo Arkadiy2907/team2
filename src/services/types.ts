@@ -54,14 +54,9 @@ export interface IUser {
   password: string
 }
 
-export interface ISignForm {
-  login: string
-  password: string
-}
-
 export interface AuthFormProps {
   type: 'signUp' | 'signIn'
-  onSubmit: (data: ISignForm) => void
+  onSubmit: (data: IUser) => void
   errorModalOpen: boolean
   setErrorModalOpen: (data: boolean) => void
   errorMessage: string
