@@ -1,10 +1,14 @@
 import React, { useState } from 'react'
 import { SubmitHandler } from 'react-hook-form'
-import { isLoggedAction, isSearchAction } from '../../../store/Actions/Action'
+import {
+  isLoggedAction,
+  isSearchAction,
+  setNameAction,
+} from '../../../store/Actions/Action'
 import AuthForm from '../AuthForm'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { ISignForm, IUser } from '../../../services/types'
+import { IUser } from '../../../services/types'
 import './SignIn.css'
 import '../authentication.css'
 
@@ -14,7 +18,7 @@ const SignIn: React.FC = () => {
   const dispatch = useDispatch()
   const nav = useNavigate()
 
-  const onSubmit: SubmitHandler<ISignForm> = data => {
+  const onSubmit: SubmitHandler<IUser> = data => {
     const storedUsers = localStorage.getItem('users')
 
     if (storedUsers) {
@@ -26,8 +30,8 @@ const SignIn: React.FC = () => {
           user => user.login === data.login && user.password === data.password,
         )
 
-      if (foundUser) {
-        console.log('Login successful!')
+      if (foundUser) {        
+        dispatch(setNameAction(data.login))
         dispatch(isLoggedAction(true))
         dispatch(isSearchAction(false))
         nav('/main')

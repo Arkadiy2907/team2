@@ -10,7 +10,7 @@ import {
   DialogActions,
 } from '@mui/material'
 import { loginValidation, passwordValidation } from './validation'
-import { AuthFormProps, ISignForm } from '../../services/types'
+import { AuthFormProps, IUser } from '../../services/types'
 
 const AuthForm: React.FunctionComponent<AuthFormProps> = ({
   type,
@@ -19,7 +19,7 @@ const AuthForm: React.FunctionComponent<AuthFormProps> = ({
   setErrorModalOpen,
   errorMessage,
 }) => {
-  const { handleSubmit, control } = useForm<ISignForm>()
+  const { handleSubmit, control } = useForm<IUser>()
   const { errors } = useFormState({ control })
   // const [errorModalOpen, setErrorModalOpen] = useState(false)
 
