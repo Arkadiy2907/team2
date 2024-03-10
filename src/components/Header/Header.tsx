@@ -1,7 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { isSearchAction, isLoggedAction } from '../../store/Actions/Action'
+import {
+  isSearchAction,
+  isLoggedAction,
+  setNameAction,
+} from '../../store/Actions/Action'
 import {
   Container,
   IconButton,
@@ -11,7 +15,7 @@ import {
   Avatar,
 } from '@mui/material'
 import logo from '../../assets/logo.png'
-import { IRootStateLogged } from '../../services/types'
+import { IRootStateLogged, IRootStateNamed } from '../../services/types'
 import { wrap, wrapLogo } from './styles'
 
 const Header = () => {
@@ -19,8 +23,15 @@ const Header = () => {
     (state: IRootStateLogged) => state.isLogged.isLogged,
   )
 
+  const named = useSelector((state: IRootStateNamed) => state.named.named)
+
   const [isReg, setIsReg] = React.useState(logged)
+  const [userName, setUserName] = React.useState(named)
   const dispatch = useDispatch()
+
+  React.useEffect(() => {
+    setUserName(named)
+  }, [named])
 
   React.useEffect(() => {
     setIsReg(logged)
@@ -30,6 +41,7 @@ const Header = () => {
     setIsReg(false)
     dispatch(isSearchAction(false))
     dispatch(isLoggedAction(false))
+    dispatch(setNameAction(''))
   }
 
   return (
@@ -56,7 +68,11 @@ const Header = () => {
           observer
         </Typography>
       </Box>
-
+      {isReg && (
+        <Box>
+          <Typography variant="h6">Hi: {userName}</Typography>
+        </Box>
+      )}
       {isReg ? (
         <Box>
           <Button

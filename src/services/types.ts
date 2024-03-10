@@ -43,6 +43,11 @@ export interface IActionsLogged {
   payload: boolean
 }
 
+export interface IActionsName {
+  type: string
+  payload: string
+}
+
 export interface IRootStateLogged {
   isLogged: {
     isLogged: boolean
@@ -87,8 +92,15 @@ export type FavoritesAction =
   | { type: 'ADD_TO_FAVORITES'; payload: ICards }
   | { type: 'REMOVE_FROM_FAVORITES'; payload: ICards }
 
+export interface IRootStateNamed {
+  named: {
+    named: string
+  }
+}
+
 export interface RootState {
   isSearch: IRootStateSearch
   isLogged: IRootStateLogged
   favoritesReducer: FavoritesState
+  named: IRootStateNamed
 }
