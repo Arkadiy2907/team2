@@ -9,7 +9,6 @@ import AuthForm from '../AuthForm'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { IUser } from '../../../services/types'
-import './SignIn.css'
 import '../authentication.css'
 
 const SignIn: React.FC = () => {
