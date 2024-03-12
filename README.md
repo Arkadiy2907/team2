@@ -58,4 +58,6 @@
 
 ### Arkadiy (search/каркас приложения)
 
+[Open the Application](https://main--storied-fudge-41aa58.netlify.app/)
+
 ![макет блока](./src/assets/maket.png)
