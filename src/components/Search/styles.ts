@@ -1,12 +1,12 @@
 export const wrap = {
+  minHeight: '100vh',
   display: 'flex',
   flexDirection: 'column',
-  justifyContent: 'space-between;',
   alignItems: 'center',
   overflowY: 'auto',
   backgroundColor: 'white',
   gap: '5px',
-  padding: '5px 0',
+  padding: '100px 0',
 }
 
 export const wrapForm = {

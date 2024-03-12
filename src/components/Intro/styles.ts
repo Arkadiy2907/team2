@@ -5,4 +5,5 @@ export const wrap = {
   alignItems: 'center',
   overflowY: 'auto',
   backgroundColor: 'white',
-};
+  // padding: '70px 0 0 0',
+}

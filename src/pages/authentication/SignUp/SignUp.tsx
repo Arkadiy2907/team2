@@ -29,7 +29,7 @@ const SignUp: React.FC = () => {
 
       if (existingUser) {
         setErrorMessage(
-          'Пользователь с таким логином уже существует. Пожалуйста, выберите другой логин.',
+          'User with this login already exists. Please choose a different login.',
         )
         setErrorModalOpen(true)
         return

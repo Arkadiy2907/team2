@@ -32,7 +32,7 @@ const Card: React.FC<ICardProps> = ({ image, onImageClick, logged }) => {
   }
 
   return (
-    <ListItem disablePadding>
+    <ListItem disablePadding sx={{ justifyContent: 'space-around' }}>
       {isLoading ? (
         <Loader />
       ) : (
@@ -64,6 +64,7 @@ const Card: React.FC<ICardProps> = ({ image, onImageClick, logged }) => {
           </Typography>
           {logged && (
             <IconButton
+              // sx={{ padding: '2rem' }}
               onClick={() => handleFavoritesIcon()}
               color={isImageFavorite ? 'primary' : 'default'}
             >

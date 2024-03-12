@@ -108,7 +108,15 @@ export default function Search() {
           )}
         </Box>
       ) : (
-        <Box>
+        <Box
+          display="flex"
+          height="100%"
+          justifyContent="center"
+          alignItems="center"
+          marginTop="100px"
+          width="80%"
+          textAlign="center"
+        >
           <Intro />
         </Box>
       )}

@@ -68,30 +68,33 @@ const Header = () => {
           observer
         </Typography>
       </Box>
-      {isReg && (
-        <Box>
-          <Typography variant="h6">Hi: {userName}</Typography>
-        </Box>
-      )}
+
       {isReg ? (
-        <Box>
-          <Button
-            component={Link}
-            to="/"
-            onClick={() => dispatch(isSearchAction(false))}
-            color="inherit"
-          >
-            Search
-          </Button>
-          <Button component={Link} to="/favorites" color="inherit">
-            Favorites
-          </Button>
-          <Button component={Link} to="/history" color="inherit">
-            History
-          </Button>
-          <Button onClick={handleClickSignOut} color="inherit">
-            SignOut
-          </Button>
+        <Box display="flex" gap="2rem">
+          <Box>
+            <Button
+              component={Link}
+              to="/"
+              onClick={() => dispatch(isSearchAction(false))}
+              color="inherit"
+            >
+              Search
+            </Button>
+            <Button component={Link} to="/favorites" color="inherit">
+              Favorites
+            </Button>
+            <Button component={Link} to="/history" color="inherit">
+              History
+            </Button>
+          </Box>
+
+          <Box display="flex">
+            <Typography variant="h6">{userName}</Typography>
+
+            <Button onClick={handleClickSignOut} color="inherit">
+              SignOut
+            </Button>
+          </Box>
         </Box>
       ) : (
         <Box>

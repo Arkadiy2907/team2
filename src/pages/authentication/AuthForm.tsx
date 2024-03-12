@@ -21,7 +21,6 @@ const AuthForm: React.FunctionComponent<AuthFormProps> = ({
 }) => {
   const { handleSubmit, control } = useForm<IUser>()
   const { errors } = useFormState({ control })
-  // const [errorModalOpen, setErrorModalOpen] = useState(false)
 
   const handleModalClose = () => {
     setErrorModalOpen(false)
@@ -31,7 +30,7 @@ const AuthForm: React.FunctionComponent<AuthFormProps> = ({
     <div className="auth-page">
       <div className="auth-form">
         <Typography variant="h4" component="div">
-          {type === 'signUp' ? 'Зарегистрируйтесь' : 'Войдите'}
+          {type === 'signUp' ? 'Sign up' : 'Sign in'}
         </Typography>
 
         <Typography
@@ -40,9 +39,7 @@ const AuthForm: React.FunctionComponent<AuthFormProps> = ({
           gutterBottom={true}
           className="auth-form__subtitle"
         >
-          {type === 'signUp'
-            ? 'чтобы создать аккаунт'
-            : 'чтобы получить доступ'}
+          {type === 'signUp' ? 'to create an account' : 'to get access'}
         </Typography>
 
         <form className="auth-form__form" onSubmit={handleSubmit(onSubmit)}>
@@ -53,7 +50,7 @@ const AuthForm: React.FunctionComponent<AuthFormProps> = ({
             defaultValue=""
             render={({ field }) => (
               <TextField
-                label="Логин"
+                label="login"
                 size="small"
                 margin="normal"
                 fullWidth={true}
@@ -73,7 +70,7 @@ const AuthForm: React.FunctionComponent<AuthFormProps> = ({
             defaultValue=""
             render={({ field }) => (
               <TextField
-                label="Пароль"
+                label="password"
                 type="password"
                 size="small"
                 margin="normal"
@@ -93,13 +90,13 @@ const AuthForm: React.FunctionComponent<AuthFormProps> = ({
             fullWidth={true}
             sx={{ marginTop: 2 }}
           >
-            {type === 'signUp' ? 'Зарегистрироваться' : 'Войти'}
+            {type === 'signUp' ? 'Sign up' : 'Sign in'}
           </Button>
         </form>
       </div>
 
       <Dialog open={errorModalOpen} onClose={handleModalClose}>
-        <DialogTitle>Ошибка!</DialogTitle>
+        <DialogTitle>Error!</DialogTitle>
         <DialogContent>
           <Typography>{errorMessage}</Typography>
         </DialogContent>

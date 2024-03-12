@@ -5,6 +5,7 @@
 }
 .auth-page {
   height: 100vh;
+  width: 35%;
 }
 .auth-form {
   height: 100vh;
@@ -12,4 +13,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.auth-form__form {
+  width: 100%;
 }

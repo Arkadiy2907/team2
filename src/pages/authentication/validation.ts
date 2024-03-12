@@ -1,10 +1,10 @@
-const REQUIRED_FIELD = 'Обязательно для заполнения'
+const REQUIRED_FIELD = 'Required'
 
 export const loginValidation = {
   required: REQUIRED_FIELD,
   validate: (value: string) => {
     if (value.match(/[а-яА-Я]/)) {
-      return 'Логин не может содержать кириллицу'
+      return 'Login must contain only Latin characters'
     }
     return true
   },
@@ -14,7 +14,7 @@ export const passwordValidation = {
   required: REQUIRED_FIELD,
   validate: (value: string) => {
     if (value.length < 6) {
-      return 'Длина пароля не может быть меньше 6-ти символов'
+      return 'The password length cannot be less than 6 characters'
     }
     return true
   },

@@ -26,9 +26,9 @@ const Favorites: React.FC = () => {
   }
 
   return (
-    <div style={{ padding: '20px' }}>
-      <h2>Избранные фотографии</h2>
-      <Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
+    <div style={{ margin: '100px 0 0 0' }}>
+      <h2>Favourite images</h2>
+      <Box sx={{ display: 'flex', flexWrap: 'wrap', margin: '2em' }}>
         {favorites.map((image: ICards) => (
           <Card
             key={image.id}

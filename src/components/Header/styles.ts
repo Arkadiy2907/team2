@@ -6,7 +6,9 @@ export const wrap = {
   backgroundColor: 'aquamarine',
   padding: '5px',
   marginBottom: '5px',
-};
+  position: 'fixed',
+  zIndex: 10,
+}
 
 export const wrapLogo = {
   display: 'flex',
@@ -14,4 +16,4 @@ export const wrapLogo = {
   alignItems: 'center',
   overflowY: 'auto',
   backgroundColor: 'aquamarine',
-};
+}

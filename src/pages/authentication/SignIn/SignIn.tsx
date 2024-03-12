@@ -30,19 +30,19 @@ const SignIn: React.FC = () => {
           user => user.login === data.login && user.password === data.password,
         )
 
-      if (foundUser) {        
+      if (foundUser) {
         dispatch(setNameAction(data.login))
         dispatch(isLoggedAction(true))
         dispatch(isSearchAction(false))
         nav('/main')
       } else {
-        console.log('Неправильные введенные данные. Попробуйте снова.')
-        setErrorMessage('Неправильные введенные данные. Попробуйте снова.')
+        console.log('Incorrect login or password entered. Try again.')
+        setErrorMessage('Incorrect login or password entered. Try again.')
         setErrorModalOpen(true)
       }
     } else {
-      console.log('Пользователь не найдет. Попробуйте снова.')
-      setErrorMessage('Пользователь не найдет. Попробуйте снова.')
+      console.log('User not found. Try again.')
+      setErrorMessage('User not found. Try again.')
       setErrorModalOpen(true)
     }
   }

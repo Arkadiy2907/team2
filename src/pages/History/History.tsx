@@ -7,8 +7,8 @@ const History = () => {
   )
 
   return (
-    <div>
-      <h2>История избранного</h2>
+    <div style={{ margin: '100px 0 0 0' }}>
+      <h2>Favorites story</h2>
       <br />
       <ul>
         {actionLogs.map((log, index: number) => (
